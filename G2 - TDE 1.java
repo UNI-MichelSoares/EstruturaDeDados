@@ -112,6 +112,14 @@ public class ArquivoAutomovel {
 
 	public void adicionarAutomovel(Automovel novo, String caminho) throws IOException {
 		List<Automovel> lista = carregar(caminho);
+
+		for (Automovel a : lista) {
+			if (a.getPlaca().equalsIgnoreCase(novo.getPlaca())) {
+				System.out.println("Já existe um automóvel com a placa: " + novo.getPlaca());
+				return;
+			}
+		}
+
 		lista.add(novo);
 		salvar(lista, caminho);
 	}
